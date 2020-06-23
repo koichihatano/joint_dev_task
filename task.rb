@@ -64,11 +64,8 @@ def q8
   programming_languages = %w(ruby php python javascript)
   
   # 以下に回答を記載
- 
-  p programming_languages.map{|a| a.capitalize}
-  
-  upper_case_programming_languages = ["ruby", "php", "python", "javascript"]
-  p upper_case_programming_languages.map{|a| a.upcase}
+  programming_languages.map(&:capitalize!)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -88,12 +85,8 @@ def q10
 
   # 以下に回答を記載
   foods.each do |food|
-  if ["うに", "うにぎり", "うに軍艦", "うに丼"].include?(food)
-  puts "好物です"
-  else
-  puts "まあまあ好きです"
+    puts food.include?("うに") ? "好物です" : "まあまあ好きです"
   end
-end
 end
 
 
@@ -102,10 +95,8 @@ def q11
   
 
   # 以下に回答を記載
-  sports.flatten!
-  sports.uniq!
   puts "ユーザーの趣味一覧"
-  sports.each.with_index(1) do |sport, i|
+  sports.flatten.uniq.each.with_index(1) do |sport, i|
   puts "No#{i} #{sport}"
    end
   end
@@ -114,6 +105,8 @@ def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
+  p data.dig(:user, :name)
+  
 
 end
 
@@ -122,7 +115,7 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  p user_data.merge(update_data)
 end
 
 def q14
@@ -130,6 +123,7 @@ def q14
 
   # 以下に回答を記載
 
+  p data.keys
 end
 
 def q15
@@ -137,7 +131,10 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+   data1.key?(:age)
+  puts "OK"
+  data2.key?(:age)
+  puts "NG"
 end
 
 def q16
@@ -149,6 +146,7 @@ def q16
   ]
 
   # 以下に回答を記載
+  puts users.to_a
 
 end
 
