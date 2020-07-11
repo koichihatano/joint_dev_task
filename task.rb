@@ -148,11 +148,36 @@ def q16
   puts "私の名前は#{value[:name]}です。年齢は#{value[:age]}歳です。"
   end
 end
+
 class UserQ17
   # 以下に回答を記載
+  def initialize(**params)
+  @name = params[:name]
+  @age = params[:age]
+  @gender = params[:gender]
+  end
 
+  
+
+  def info
+  puts <<~TEXT 
+  名前:#{@name}
+  年齢:#{@age}
+  性別:#{@gender}
+  TEXT
+  
+  end
 end
 
+  begin
+  
+  rescue => exception
+  
+  else
+  
+  ensure
+
+  end
 def q17
   # ここは変更しないで下さい（ユーザー情報は変更していただいてOKです）
   user1 = UserQ17.new(name: "神里", age: 32, gender: "男")
@@ -165,27 +190,41 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
-end
-
-def q18
+  def introduce
+   if @age >= 32
+    "こんにちは，#{@name}と申します。宜しくお願いいたします。"
+   else
+    "はいさいまいど〜,#{@name}です！！！"
+    end
+  end
+ end
+  def q18
   # ここは変更しないで下さい
   user1 = UserQ18.new(name: "あじー", age: 32)
   user2 = UserQ18.new(name: "ゆたぼん", age: 10)
 
   puts user1.introduce
   puts user2.introduce
-end
+  end
+
 
 class Item
   # 以下を修正して下さい
 
-  def initialize(name)
+  def initialize(name:)
     @name = name
+  end
+  def name
+    @name
   end
 end
 
-def q19
+  def q19
   # ここは変更しないで下さい
   book = Item.new(name: "ゼロ秒思考")
   puts book.name
@@ -193,12 +232,43 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  attr_reader :name, :age
+  
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
 end
 
 class Zoo
   # 以下に回答を記載
 
+  def initialize(**params)
+    @name = params[:name]
+    @entry_fee = params[:entry_fee]
+   end
+  
+   def name
+    @name 
+   end
+  
+   def entry_fee 
+    @entry_fee
+  end
+
+  def info_entry_fee(user)
+    case user.age
+    when 0..5 
+    puts "#{user.name}さんの入場料金は#{@entry_fee[:infant]}円です"
+    when 6..12 
+    puts "#{user.name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    when 13..64 
+    puts "#{user.name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    else
+    puts "#{user.name}さんの入場料金は#{@entry_fee[:senior]}円です。"
+    end
+  end
 end
 
 
