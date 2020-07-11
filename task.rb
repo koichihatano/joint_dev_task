@@ -158,7 +158,6 @@ class UserQ17
   end
 
   
-
   def info
   puts <<~TEXT 
   名前:#{@name}
@@ -169,15 +168,6 @@ class UserQ17
   end
 end
 
-  begin
-  
-  rescue => exception
-  
-  else
-  
-  ensure
-
-  end
 def q17
   # ここは変更しないで下さい（ユーザー情報は変更していただいてOKです）
   user1 = UserQ17.new(name: "神里", age: 32, gender: "男")
@@ -245,28 +235,22 @@ class Zoo
   # 以下に回答を記載
 
   def initialize(**params)
-    @name = params[:name]
-    @entry_fee = params[:entry_fee]
-   end
-  
-   def name
-    @name 
-   end
-  
-   def entry_fee 
-    @entry_fee
+    @infant = params[:entry_fee][:infant]
+    @children = params[:entry_fee][:children]
+    @adult = params[:entry_fee][:adult]
+    @senior = params[:entry_fee][:senior]
   end
 
   def info_entry_fee(user)
     case user.age
     when 0..5 
-    puts "#{user.name}さんの入場料金は#{@entry_fee[:infant]}円です"
+    puts "#{user.name}さんの入場料金は#{@infant}円です"
     when 6..12 
-    puts "#{user.name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    puts "#{user.name}さんの入場料金は#{@children}円です。"
     when 13..64 
-    puts "#{user.name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    puts "#{user.name}さんの入場料金は#{@adult}円です。"
     else
-    puts "#{user.name}さんの入場料金は#{@entry_fee[:senior]}円です。"
+    puts "#{user.name}さんの入場料金は#{@senior}円です。"
     end
   end
 end
