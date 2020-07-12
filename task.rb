@@ -235,6 +235,7 @@ class Zoo
   # 以下に回答を記載
 
   def initialize(**params)
+   
     @infant = params[:entry_fee][:infant]
     @children = params[:entry_fee][:children]
     @adult = params[:entry_fee][:adult]
@@ -242,18 +243,21 @@ class Zoo
   end
 
   def info_entry_fee(user)
-    case user.age
+  
+  price = case user.age
     when 0..5 
-    puts "#{user.name}さんの入場料金は#{@infant}円です"
-    when 6..12 
-    puts "#{user.name}さんの入場料金は#{@children}円です。"
-    when 13..64 
-    puts "#{user.name}さんの入場料金は#{@adult}円です。"
+     @infant          
+    when 6..12
+    @children          
+    when 13..64       
+    @adult                
     else
-    puts "#{user.name}さんの入場料金は#{@senior}円です。"
+    @senior               
     end
+    puts "#{user.name}さんは#{price}円です。"
   end
 end
+
 
 
 def q20
